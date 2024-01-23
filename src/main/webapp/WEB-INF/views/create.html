@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Create form</h1>
+<div  th:each="item : ${listErr}" >
+    <h5 th:text="${item.getDefaultMessage()}"></h5>
+</div>
+<form action="/cars/save" method="post">
+    <input type="text" name="name">
+    <input type="number" name="price" value="0">
+    <input type="text" name="description">
+    <select th:field="*{car.brand.id}">
+        <option th:each="item : ${listBrand}" th:text="${item.name}" th:value="${item.id}">
+    </select>
+    <input type="submit" value="Save">
+</form>
+</body>
+</html>

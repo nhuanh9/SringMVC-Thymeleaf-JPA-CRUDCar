@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Serch list cars</h1>
+<form action="/cars/search" method="get">
+    <input type="text" name="searchText">
+    <input type="submit" value="search">
+</form>
+<a href="/cars/create">Add</a>
+<table border="1">
+    <tr>
+        <td><strong>Id</strong></td>
+        <td><strong>Name</strong></td>
+        <td><strong>Price</strong></td>
+        <td><strong>Description</strong></td>
+        <td><strong>Brand</strong></td>
+        <td><strong>Actions</strong></td>
+    </tr>
+    <tr th:each="item : ${cars}">
+        <td th:text="${item.id}"></td>
+        <td th:text="${item.name}"></td>
+        <td th:text="${item.price}"></td>
+        <td th:text="${item.description}"></td>
+        <td th:text="${item.brand.name}"></td>
+        <td><a th:href="@{/cars/edit/__${item.id}__}">Edit</a>
+            <a th:href="@{/cars/delete/__${item.id}__}" class="confirm-delete">Delete</a>
+            <a th:href="@{/cars/details/__${item.id}__}">Details</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
