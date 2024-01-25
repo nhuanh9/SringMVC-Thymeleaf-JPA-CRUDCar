@@ -51,7 +51,7 @@ public class CarController {
     public ModelAndView edit(@Valid Car car, BindingResult bindingResult){
         if (bindingResult.hasErrors()) {
             ModelAndView modelAndView = new ModelAndView("/edit");
-            modelAndView.addObject("car", new Car());
+            modelAndView.addObject("car", carService.findById(car.getId()).get());
             modelAndView.addObject("listBrand", brandService.findAll());
             modelAndView.addObject("listErr", bindingResult.getAllErrors());
             return modelAndView;

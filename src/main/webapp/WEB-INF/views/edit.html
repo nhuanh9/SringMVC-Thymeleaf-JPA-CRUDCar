@@ -9,12 +9,12 @@
 <div  th:each="item : ${listErr}" >
     <h5 th:text="${item.getDefaultMessage()}"></h5>
 </div>
-<form action="/cars/edit" method="post">
-    <input type="hidden" name="id" th:value="${car.id}">
-    <input type="text" name="name" th:value="${car.name}">
-    <input type="number" name="price" value="0" th:value="${car.price}">
-    <input type="text" name="description"  th:value="${car.description}">
-    <select th:field="*{car.brand.id}">
+<form action="/cars/edit" method="post" th:object="${car}">
+    <input type="hidden" th:field="*{id}">
+    <input type="text" th:field="*{name}">
+    <input type="number" value="0"  th:field="*{price}">
+    <input type="text" name="description"  th:field="*{description}">
+    <select th:field="*{brand.id}">
         <option th:each="item : ${listBrand}" th:text="${item.name}" th:value="${item.id}">
     </select>
     <input type="submit" value="Save">

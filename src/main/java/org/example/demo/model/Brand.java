@@ -28,3 +28,4 @@ public class Brand {
         return id;
     }
 }
+
