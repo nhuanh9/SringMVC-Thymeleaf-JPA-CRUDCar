@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import javax.servlet.http.HttpSession;
 
 @Controller
-@SessionAttributes("sessionValue")
 public class SessionController {
 
     @GetMapping("/session/increase")
