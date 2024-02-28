@@ -34,14 +34,15 @@ public class CarController {
         return modelAndView;
     }
 
-    @PostMapping("/save")
-    public ModelAndView create(@Valid Car car, BindingResult bindingResult){
+    @PostMapping("/save") // join point
+    public ModelAndView create(@Valid Car car, BindingResult bindingResult) throws Exception {
         if (bindingResult.hasErrors()) {
-            ModelAndView modelAndView = new ModelAndView("/create");
-            modelAndView.addObject("car", new Car());
-            modelAndView.addObject("listBrand", brandService.findAll());
-            modelAndView.addObject("listErr", bindingResult.getAllErrors());
-            return modelAndView;
+            throw new Exception();
+//            ModelAndView modelAndView = new ModelAndView("/create");
+//            modelAndView.addObject("car", new Car());
+//            modelAndView.addObject("listBrand", brandService.findAll());
+//            modelAndView.addObject("listErr", bindingResult.getAllErrors());
+//            return modelAndView;
         }
         carService.save(car);
         ModelAndView modelAndView = new ModelAndView("redirect:/cars");
