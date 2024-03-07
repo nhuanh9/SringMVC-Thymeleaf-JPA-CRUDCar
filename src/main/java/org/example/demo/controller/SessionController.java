@@ -9,7 +9,6 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 public class SessionController {
-
     @GetMapping("/session/increase")
     public String increaseSessionValue(Model model, HttpSession session) {
         Integer sessionValue = (Integer) session.getAttribute("sessionValue");

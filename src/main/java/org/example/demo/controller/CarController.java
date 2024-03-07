@@ -18,7 +18,6 @@ public class CarController {
     ICarService carService;
     @Autowired
     IBrandService brandService;
-
     @GetMapping
     public ModelAndView showHomePage(){
         ModelAndView modelAndView = new ModelAndView("/list");
